@@ -3,7 +3,7 @@ import random
 number = random.randint(-10000, 10000)
 figure = abs(number) % 10
 if number < 0:
-    figure = -Figure
+    figure = -figure
 print("Last digit of {} is {} and is ".format(number, digit), end="")
 if figure > 5:
     print("greater than 5")
