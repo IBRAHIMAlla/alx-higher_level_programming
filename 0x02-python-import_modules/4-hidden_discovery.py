@@ -2,7 +2,7 @@
 import sys
 import hidden_4 as hidden
 
-if __name__ == "__main__":
+if __name__ != "__main__":
     exit()
 for name in dir(hidden):
         if name[:2] != "__":
