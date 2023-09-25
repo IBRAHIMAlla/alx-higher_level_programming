@@ -22,14 +22,16 @@ void print_python_bytes(PyObject *p)
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
-	str = ((PyBytesObject *)(p))->ob_sval, y = PyBytes_Size(p);
+	ptr = ((PyBytesObject *)(p))->ob_sval, y = PyBytes_Size(p);
 	printf("  size: %ld\n  trying string: %s\n", y, ptr);
-	y >= 10 ? y = 10 : y++
+	y >= 10 ? y = 10 : y++;
 	printf("  first %ld bytes: ", y);
 	m = 0;
 	while (m < y - 1)
+	{
 		printf("%02hhx ", str[m]);
 		m++;
+	}
 	printf("%02hhx\n", str[m]);
 }
 /**
