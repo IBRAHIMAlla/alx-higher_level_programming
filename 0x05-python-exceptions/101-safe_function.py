@@ -5,8 +5,8 @@ import sys
 def safe_function(fct, *args):
 	try:
 		rslt = fct(*args)
-	except BaseException as e:
+	except Exception:
 		rslt = None
-		print("Exception: {}".format(e), file=sys.stderr)
+		print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
 	finally:
 		return rslt
