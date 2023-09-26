@@ -3,7 +3,7 @@
 
 
 class Square:
-    """  class defined
+    """ Represent class
         Attributes:
             size (int): Size of square
             position (tuple): position of space and new lines
