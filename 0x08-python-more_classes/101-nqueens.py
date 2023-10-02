@@ -20,19 +20,19 @@ if __name__ == "__main__":
         print("N must be at least 4")
         exit(1)
 
-    # initialize
+    # initialize the answer list
     for m in range(n):
         o.append([m, None])
 
     def already_exists(y):
-        """already_exists"""
-        for j in range(n):
-            if y == o[j][1]:
+        """Ensure there is no existing queen at that y value"""
+        for v in range(n):
+            if y == o[v][1]:
                 return True
         return False
 
     def reject(x, y):
-        """reject"""
+        """Decides whether to accept or reject the solution"""
         if (already_exists(y)):
             return False
         m = 0
@@ -43,12 +43,12 @@ if __name__ == "__main__":
         return True
 
     def clear_a(x):
-        """clear_a"""
+        """clears the answers starting from the point of failure on"""
         for m in range(x, n):
             o[m][1] = None
 
     def nqueens(x):
-        """nqueens"""
+        """recursive backtracking function to find the solution"""
         for y in range(n):
             clear_a(x)
             if reject(x, y):
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 if (x == n - 1):  # Receives the solution
                     print(o)
                 else:
-                    nqueens(x + 1)  # moves on to next x value
+                    nqueens(x + 1)  # moves on to next x value to continue
 
-    # start x = 0
+    # start the recursive process at x = 0
     nqueens(0)
