@@ -8,7 +8,7 @@ on an N×N chessboard so that no two queens attack each other
 from sys import argv
 
 if __name__ == "__main__":
-    o = []
+    a = []
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
@@ -21,13 +21,13 @@ if __name__ == "__main__":
         exit(1)
 
     # initialize
-    for m in range(n):
-        o.append([m, None])
+    for i in range(n):
+        a.append([i, None])
 
     def already_exists(y):
         """already_exists"""
-        for w in range(n):
-            if y == o[w][1]:
+        for x in range(n):
+            if y == a[x][1]:
                 return True
         return False
 
@@ -35,28 +35,28 @@ if __name__ == "__main__":
         """reject"""
         if (already_exists(y)):
             return False
-        m = 0
-        while(m < x):
-            if abs(o[m][1] - y) == abs(m - x):
+        i = 0
+        while(i < x):
+            if abs(a[i][1] - y) == abs(i - x):
                 return False
-            m += 1
+            i += 1
         return True
 
     def clear_a(x):
         """clear_a"""
-        for m in range(x, n):
-            o[m][1] = None
+        for i in range(x, n):
+            a[i][1] = None
 
     def nqueens(x):
         """nqueens"""
         for y in range(n):
             clear_a(x)
             if reject(x, y):
-                o[x][1] = y
+                a[x][1] = y
                 if (x == n - 1):  # Receives the solution
-                    print(o)
+                    print(a)
                 else:
                     nqueens(x + 1)  # moves on to next x value
 
-    # start at x = 0
+    # start x = 0
     nqueens(0)
