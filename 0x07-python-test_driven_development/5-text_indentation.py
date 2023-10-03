@@ -14,7 +14,7 @@ def text_indentation(text):
     mpt = text.replace(".", ".\n\n")
     mpt = mpt.replace(":", ":\n\n")
     mpt = mpt.replace("?", "?\n\n")
-    p = mpt.splitlines(True)
+    y = mpt.splitlines(True)
     a = []
     for m in y:
         if m == "\n":
