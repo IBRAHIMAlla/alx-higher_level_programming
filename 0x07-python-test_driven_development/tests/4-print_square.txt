@@ -1,0 +1,49 @@
+Test scenarios for '4-print_square.py'
+=================================
+
+Output a square
+--------------
+
+>>> print_square = __import__('4-print_square').print_square
+
+Cases for evaluation:
+
+Case #1: testing with no arguments passed
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+Case #2: test with a Null argument passing.
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Case #3: test the use of a negative number.
+>>> print_square(-4)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+Case #4: test passing a floating-point number
+>>> print_square(6.6)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Case #5: testing the passage of a string
+>>> print_square("a")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Case #6: testing the successful passage of a zero value.
+>>> print_square(0)
+<BLANKLINE>
+
+Case #7: test the passage of an infinite number.
+>>> print_square(float('inf'))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
