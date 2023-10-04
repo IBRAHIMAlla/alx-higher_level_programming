@@ -1,77 +1,81 @@
-'0-add_integer.py'
+Test scenarios for '0-add_integer.py'
 =================================
 
+Perform the addition of two integers using the 'add_integer' function
+--------------------------------------------------
 
+Import 'add_integer'
 >>> add_integer = __import__('0-add_integer').add_integer
 
+Cases for evaluation:
 
-Case #1:
+Case #1: Test without any arguments.
 >>> add_integer()
 Traceback (most recent call last):
 ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
 
-Case #2:
+Case #2: test a variable for null, setting it to 'a'.
 >>> add_integer(None, 1)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
-Case #3:
+Case #3: test a variable for null, setting it to 'b'.
 >>> add_integer(1, None)
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
 
-Case #4:
+Case #4: test both variables for null values.
 >>> add_integer(None, None)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
-Case #5:
+Case #5: test passing over 2 arguments.
 >>> add_integer(1, 1, 1)
 Traceback (most recent call last):
 ...
 TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
 
-Case #6:
+Case #6: test the string 'a' as if it were an integer (int(b)).
 >>> add_integer("Holberton", 98)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
-Case #7: test 'b' such as string (int(a)).
+Case #7: test the string 'b' as if it were an integer (int(a)).
 >>> add_integer(98, "Holberton")
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
 
-Case #8:
+Case #8: test for the presence of both 'a' and 'b' in a string.
 >>> add_integer("98", "Holberton")
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
-Case #9:
+Case #9: test accepts two integer arguments.
 >>> add_integer(2, -2)
 0
 
-Case #10:
+Case #10: testing the addition of one integer argument.
 >>> add_integer(2)
 100
 
-Case #11:
+Case #11: testing the addition of floating-point numbers.
 >>> add_integer(20.5, 0.5)
 20
 
-Case #12:
+Case #12: testing the addition of a complex number to 'a' yields the same result when applied to 'b'.
 >>> add_integer(7+7j, 7)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
-Case #13:
+Case #13: Test using infinity as an argument.
 >>> add_integer(float('inf'), 1)
 Traceback (most recent call last):
 ...
