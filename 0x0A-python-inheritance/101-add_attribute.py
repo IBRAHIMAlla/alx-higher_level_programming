@@ -6,11 +6,11 @@
 
 def add_attribute(an_obj, an_attr, a_value):
     """
-    Verifies the feasibility of adding an attribute an_attr with the value a_value to an_obj.
+    Checks if an_attr of value a_value can be included to an_obj.
     Args:
-        - an_obj: Object to which the attribute should be added
-        - an_attr: attribute's name
-        - a_value: Attribute value to be added
+        - an_obj: obj
+        - an_attr: name of the attribute
+        - a_value: value of the attribute to add
     """
 
     if not hasattr(an_obj, '__slots__') and not hasattr(an_obj, '__dict__'):
