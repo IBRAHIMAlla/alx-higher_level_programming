@@ -6,10 +6,10 @@
 
 def inherits_from(obj, a_class):
     """
-    inherits_from - Verifies whether an object is an instance inherited from a class.
+    inherits_from - Checks if an object is a Received  instance of a class.
     Args:
-        obj: The object to verify.
-        a_class: The class that matches the type of obj.
+        obj: The object.
+        a_class: The class to match the type of obj to.
     Returns: If obj is an inherited instance of a_class - True,
             Otherwise - False.
     """
