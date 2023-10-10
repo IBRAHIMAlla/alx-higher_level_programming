@@ -10,9 +10,9 @@ def fact(m):
     return m * fact(m - 1)
 
 
-def comb(a, b):
+def comb(n, r):
     """Returns the res"""
-    return fact(a) / (fact(b) * fact(a - b))
+    return fact(n) / (fact(r) * fact(n - r))
 
 
 def pascal_triangle(n):
