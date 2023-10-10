@@ -1,22 +1,18 @@
 #!/usr/bin/python3
-"""12-pascal_triangle
+"""
+Module for pascal_triangle method.
 """
 
 
-def fact(m):
-    """Returns the factorial"""
-    if m == 0:
-        return 1
-    return m * fact(m - 1)
-
-
-def comb(n, r):
-    """Returns the res"""
-    return fact(n) / (fact(r) * fact(n - r))
-
-
 def pascal_triangle(n):
-    """Returns a list of lists of integers representing
-    the Pascal’s triangle of n
     """
-    return [[int(comb(c, m)) for m in range(c + 1)] for c in range(n)]
+    returns a list of lists
+        Args:
+            n (int): number of lists
+        Returns: list of lists
+    """
+    r = [[1 for y in range(m + 1)] for m in range(n)]
+    for n in range(n):
+        for m in range(n - 1):
+            r[n][m + 1] = sum(r[n - 1][m:m + 2])
+    return r
