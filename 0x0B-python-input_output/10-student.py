@@ -14,8 +14,8 @@ class Student:
 
     def to_json(self, attrs=None):
         """Retrieves a dictionary"""
-        if type(attrs) == list and all([type(s) == str for s in attrs]):
-            return {key: value for key, value in vars(self).items()
-                    if key in attrs}
+        if type(attrs) == list and all([type(m) == str for m in attrs]):
+            return {k: v for k, v in vars(self).items()
+                    if k in attrs}
 
         return vars(self)
