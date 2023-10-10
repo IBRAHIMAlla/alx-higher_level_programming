@@ -15,5 +15,5 @@ def append_after(filename="", search_string="", new_string=""):
                 ln[y:y + 1] = [ln[y], new_string]
                 y += 1
             y += 1
-    with open(filename, "w", encoding="utf-8") as f:
+    with open(filename, "w", encoding="utf-8") as m:
         m.writelines(ln)
