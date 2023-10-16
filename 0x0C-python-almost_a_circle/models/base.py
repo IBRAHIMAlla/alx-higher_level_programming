@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" class Base """
+""" Module that contains class Base """
 import json
 import csv
 import os.path
@@ -10,7 +10,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """ Initializes """
+        """ Initializes instances """
         if id is not None:
             self.id = id
         else:
@@ -33,13 +33,13 @@ class Base:
         if not list_objs:
             pass
         else:
-            for m in range(len(list_objs)):
-                list_dic.append(list_objs[m].to_dictionary())
+            for i in range(len(list_objs)):
+                list_dic.append(list_objs[i].to_dictionary())
 
-        l = cls.to_json_string(list_dic)
+        lists = cls.to_json_string(list_dic)
 
-        with open(filename, 'w') as y:
-            y.write(l)
+        with open(filename, 'w') as f:
+            f.write(lists)
 
     @staticmethod
     def from_json_string(json_string):
@@ -50,87 +50,87 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """ Create an obj """
+        """ Create an instance """
         if cls.__name__ == "Rectangle":
-            nw = cls(10, 10)
+            new = cls(10, 10)
         else:
-            nw = cls(10)
-        nw.update(**dictionary)
-        return nw
+            new = cls(10)
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
-        """ Returns a list of obj """
-        fln = "{}.json".format(cls.__name__)
+        """ Returns a list of instances """
+        filename = "{}.json".format(cls.__name__)
 
-        if os.path.exists(fln) is False:
+        if os.path.exists(filename) is False:
             return []
 
-        with open(fln, 'r') as y:
-            list_s = y.read()
+        with open(filename, 'r') as f:
+            list_str = f.read()
 
-        list_c = cls.from_json_string(list_s)
-        list_i = []
+        list_cls = cls.from_json_string(list_str)
+        list_ins = []
 
-        for m in range(len(list_c)):
-            list_i.append(cls.create(**list_c[m]))
+        for index in range(len(list_cls)):
+            list_ins.append(cls.create(**list_cls[index]))
 
-        return list_i
+        return list_ins
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """ Method that saves a CSV """
-        fln = "{}.csv".format(cls.__name__)
+        """ Method that saves a CSV file """
+        filename = "{}.csv".format(cls.__name__)
 
         if cls.__name__ == "Rectangle":
-            list_d = [0, 0, 0, 0, 0]
-            list_k = ['id', 'width', 'height', 'x', 'y']
+            list_dic = [0, 0, 0, 0, 0]
+            list_keys = ['id', 'width', 'height', 'x', 'y']
         else:
-            list_d = ['0', '0', '0', '0']
-            list_k = ['id', 'size', 'x', 'y']
+            list_dic = ['0', '0', '0', '0']
+            list_keys = ['id', 'size', 'x', 'y']
 
-        matx = []
+        matrix = []
 
         if not list_objs:
             pass
         else:
-            for o in list_objs:
-                for v in range(len(list_k)):
-                    list_d[v] = o.to_dictionary()[list_k[v]]
-                matx.append(list_d[:])
+            for obj in list_objs:
+                for kv in range(len(list_keys)):
+                    list_dic[kv] = obj.to_dictionary()[list_keys[kv]]
+                matrix.append(list_dic[:])
 
-        with open(fln, 'w') as writeFile:
-            wr = csv.wr(writeFile)
-            wr.writerows(matx)
+        with open(filename, 'w') as writeFile:
+            writer = csv.writer(writeFile)
+            writer.writerows(matrix)
 
     @classmethod
     def load_from_file_csv(cls):
-        """ Method that loads a CSV """
-        fln = "{}.csv".format(cls.__name__)
+        """ Method that loads a CSV file """
+        filename = "{}.csv".format(cls.__name__)
 
-        if os.path.exists(fln) is False:
+        if os.path.exists(filename) is False:
             return []
 
-        with open(fln, 'r') as readFile:
-            re = csv.re(readFile)
-            csv_l = list(re)
+        with open(filename, 'r') as readFile:
+            reader = csv.reader(readFile)
+            csv_list = list(reader)
 
         if cls.__name__ == "Rectangle":
-            list_k = ['id', 'width', 'height', 'x', 'y']
+            list_keys = ['id', 'width', 'height', 'x', 'y']
         else:
-            list_k = ['id', 'size', 'x', 'y']
+            list_keys = ['id', 'size', 'x', 'y']
 
-        matx = []
+        matrix = []
 
-        for csv_elem in csv_l:
-            dict_cs = {}
-            for v in enumerate(csv_elem):
-                dict_cs[list_k[v[0]]] = int(v[1])
-            matx.append(dict_cs)
+        for csv_elem in csv_list:
+            dict_csv = {}
+            for kv in enumerate(csv_elem):
+                dict_csv[list_keys[kv[0]]] = int(kv[1])
+            matrix.append(dict_csv)
 
-        list_i = []
+        list_ins = []
 
-        for m in range(len(matx)):
-            list_i.append(cls.create(**matx[m]))
+        for index in range(len(matrix)):
+            list_ins.append(cls.create(**matrix[index]))
 
-        return list_i
+        return list_ins
