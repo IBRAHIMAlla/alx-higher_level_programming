@@ -9,4 +9,4 @@ WHERE t.title NOT IN (
       INNER JOIN tv_genres n ON y.genre_id = n.id
       WHERE n.name = 'Comedy'
 )
-ORDER BY n.title ASC;
+ORDER BY t.title ASC;
