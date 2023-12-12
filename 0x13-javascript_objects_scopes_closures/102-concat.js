@@ -10,7 +10,7 @@ function callback (err, data) {
   if (err) {
     return console.log(err);
   }
-  fs.appendFile(dt, data, function (err) {
+  m.appendFile(dt, data, function (err) {
     if (err) console.log(err);
   });
 }
