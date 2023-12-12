@@ -1,2 +1,5 @@
 #!/usr/bin/node
-exports.list = [1, 2, 3, 4, 5];
+const lt = require('./100-data').list;
+const ma = lt.map(function (v, m) { return v * m; });
+console.log(lt);
+console.log(ma);
