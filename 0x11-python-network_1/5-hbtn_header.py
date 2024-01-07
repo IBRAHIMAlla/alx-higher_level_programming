@@ -4,9 +4,7 @@
 import sys
 import requests
 
-
 if __name__ == "__main__":
     u = sys.argv[1]
-
     m = requests.get(u)
-    print(m.headers.get("X-Request-Id"))
+    print(m.headers.get('x-request-id'))
