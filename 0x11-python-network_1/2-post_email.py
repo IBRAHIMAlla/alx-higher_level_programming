@@ -3,15 +3,13 @@
 Send POST request, and display body of response
 decoded in utf-8
 """
-from urllib import request, parse
 import sys
-
+from urllib import request, parse
 
 if __name__ == "__main__":
     val = {'email': sys.argv[2]}
     d = parse.urlencode(val)
-    d = d.encode('ascii')
+    d = d.encode('utf-8')
     re = request.Request(sys.argv[1], d)
-    with request.urlopen(re) as resp:
-        b = resp.read()
-        print(b.decode('utf-8'))
+    with request.urlopen(req) as resp:
+        print(resp.read().decode('utf-8'))
