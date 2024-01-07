@@ -11,5 +11,5 @@ if __name__ == "__main__":
     d = parse.urlencode(val)
     d = d.encode('utf-8')
     re = request.Request(sys.argv[1], d)
-    with request.urlopen(req) as resp:
+    with request.urlopen(re) as resp:
         print(resp.read().decode('utf-8'))
