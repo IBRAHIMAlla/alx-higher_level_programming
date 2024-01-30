@@ -2,9 +2,9 @@
 
 const req = require('request');
 const ep = process.argv[2];
-const Au = 'https://swapi-api.hbtn.io/api/films/';
+const API_URL = 'https://swapi-api.hbtn.io/api/films/';
 
-request(Au + ep, function (err, response, body) {
+request(API_URL + ep, function (err, response, body) {
   if (err) {
     console.log(err);
   } else if (response.statusCode === 200) {
