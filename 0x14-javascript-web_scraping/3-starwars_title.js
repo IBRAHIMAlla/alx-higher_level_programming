@@ -1,4 +1,4 @@
-#!/uir/bin/node
+#!/usr/bin/node
 
 const req = require('request');
 const ep = process.argv[2];
